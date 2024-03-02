@@ -13,6 +13,7 @@ const config: Config = {
         secondary: "#02B5E2",
         black3: "#333333",
         black43: "#434343",
+        gray4A: "#4a4a4a",
       },
       backgroundImage: {
         "gradient-primary": `linear-gradient(90deg, #1DD4AA 0%, #02B5E2 100%)`,

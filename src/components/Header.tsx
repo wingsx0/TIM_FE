@@ -1,12 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   return (
-    <header className="bg-[#032541] text-white mb-12">
+    <header className="bg-[#032541] text-white md:mb-12 mb-0">
       <nav className="container-page">
-        <div className="flex items-center justify-between py-5">
+        <div className="flex items-center justify-between px-4 md:px-0 py-5">
           <Link href={"/"} className="">
             <svg
               width="92"
@@ -130,7 +130,7 @@ const Header = () => {
               </defs>
             </svg>
           </Link>
-          <div className="flex items-center gap-x-10">
+          <div className="hidden md:flex items-center gap-x-10">
             <div className="flex items-center gap-x-4">
               <span>Phim</span>
               <span>Góc điện ảnh</span>
@@ -153,8 +153,9 @@ const Header = () => {
                 </svg>
               </span>
             </div>
-            <span>Đăng nhập</span>
           </div>
+          <span>Đăng nhập</span>
+          <Bars3Icon className="w-6 h-6 xl:hidden" />
         </div>
       </nav>
     </header>

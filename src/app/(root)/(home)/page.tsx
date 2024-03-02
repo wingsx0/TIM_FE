@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import BlogHomePage from "./blogHomePage";
 import CouponList from "./couponList";
+import Card from "@/components/Card";
 const HomePage = () => {
   const [active, setActive] = useState(true);
 
@@ -51,54 +52,30 @@ const HomePage = () => {
           <div>
             <div className={`${active ? "" : "hidden"}`}>
               <div className="flex flex-col items-center">
-                <div className="flex flex-wrap justify-between gap-y-6 mb-10">
-                  <div className="w-[291px] h-[436px] relative">
-                    <Image
-                      src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt=""
-                      fill
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
-                  <div className="w-[291px] h-[436px] relative">
-                    <Image
-                      src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt=""
-                      fill
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
-                  <div className="w-[291px] h-[436px] relative">
-                    <Image
-                      src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt=""
-                      fill
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
-                  <div className="w-[291px] h-[436px] relative">
-                    <Image
-                      src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt=""
-                      fill
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
-                  <div className="w-[291px] h-[436px] relative">
-                    <Image
-                      src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt=""
-                      fill
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
+                <div className="grid grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+                  <Card />
+                  <Card />
+                  <Card />
+                  <Card />
+                  <Card />
+                  <Card />
+                  <Card />
+                  <Card />
                 </div>
                 <ButtonLoadMore link=""></ButtonLoadMore>
               </div>
             </div>
             <div className={`${active ? "hidden" : ""}`}>
               <div className="flex flex-col items-center">
-                <div className="flex flex-wrap justify-between gap-y-6 mb-10">
+                <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-10">
+                  <div className="w-[291px] h-[436px] relative">
+                    <Image
+                      src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt=""
+                      fill
+                      className="w-full h-full object-cover rounded"
+                    />
+                  </div>
                   <div className="w-[291px] h-[436px] relative">
                     <Image
                       src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -161,7 +138,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        <div className="line-default"></div>
         <BlogHomePage></BlogHomePage>
+        <div className="line-default"></div>
         <CouponList></CouponList>
       </div>
     </>

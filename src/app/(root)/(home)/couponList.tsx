@@ -11,10 +11,10 @@ const CouponList = () => {
     slidesToScroll: 4,
   };
   return (
-    <div className="container-page">
+    <div className="container-page py-12">
       <div className="flex items-center gap-x-10 font-medium mb-11">
         <span className=" text-xl px-2 py-1 border-l-4 border-l-primary">
-          PHIM
+          TIN KHUYỄN MÃI
         </span>
       </div>
       <Slider {...settings}>

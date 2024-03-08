@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative md:mt-12 mt-0">
         <Banner></Banner>
         <div className="container-page px-[18px] py-6 mt-7">
           <div className="flex items-center gap-x-10 font-medium mb-11">

@@ -105,7 +105,20 @@ const DetailPage = () => {
             <div className="w-full h-1 my-4 bg-primary"></div>
             <div>
               <BorderHeading uppercase={false}>Lịch chiếu</BorderHeading>
-              <div></div>
+              <div className="text-black3">
+                <p className="font-medium mb-6 capitalize">Infinity gala</p>
+                <div className="flex items-center gap-x-5">
+                  <span className="capitalize">2D Phụ Đề</span>
+                  <div className="flex items-center gap-x-3">
+                    <span className="border border-borderGray py-2 px-8 rounded hover:bg-primary hover:text-white hover:border-primary cursor-pointer ">
+                      16:00
+                    </span>
+                    <span className="border border-[#e5e7eb] py-2 px-8 rounded hover:bg-primary hover:text-white hover:border-primary cursor-pointer ">
+                      16:00
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

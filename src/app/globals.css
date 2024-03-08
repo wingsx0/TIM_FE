@@ -26,6 +26,11 @@ select,
 textarea {
   background-color: transparent;
   outline: none;
+  border: 0;
+}
+select:active {
+  outline: none;
+  border: 0;
 }
 button {
   cursor: pointer;
@@ -47,4 +52,38 @@ body {
 }
 .line-default {
   @apply block border-b-4 border-b-[#f4f4f4]
+}
+.account-left {
+  width: calc((100% - 384px) - 64px);
+}
+
+.account-left .ant-tabs .ant-tabs-tab {
+  @apply text-black3 hover:text-secondary
+}
+.account-left .ant-tabs .ant-tabs-ink-bar{
+  @apply bg-primary !important
+
+}
+.account-left .ant-tabs-nav .ant-tabs-tab-btn {
+  @apply font-medium text-lg w-full !important
+}
+.account-left .ant-tabs-tab.ant-tabs-tab-active > div {
+  @apply text-primary !important
+}
+
+/* Menu header */
+ .ant-dropdown-menu  {
+  @apply rounded p-0 !important
+}
+.ant-dropdown-menu .ant-dropdown-menu-item {
+  @apply w-48 text-center text-base py-2 rounded-none hover:border-l-4 hover:border-l-primary hover:text-primary hover:bg-[#e8fbf7] !important
+}
+.fast-buy .ant-form-item {
+  @apply mb-0
+}
+.fast-buy .ant-select-selector {
+  @apply bg-white !important
+}
+.fast-buy .ant-select-disabled {
+  @apply border-none !important
 }

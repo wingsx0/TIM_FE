@@ -4,7 +4,7 @@ import { Dropdown } from "antd";
 import Link from "next/link";
 const MenuHeader = () => {
   return (
-    <div className="hidden md:flex items-center gap-x-10">
+    <div className="hidden lg:flex items-center gap-x-10">
       <div className="flex items-center gap-x-6  menu-header">
         <MovieItem />
         <CategoryItem />

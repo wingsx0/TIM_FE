@@ -1,6 +1,6 @@
 "use client";
-import { usePathname } from "next/navigation";
 import React from "react";
+import { usePathname } from "next/navigation";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import ProfileAccount from "./ProfileAccount";
@@ -39,18 +39,8 @@ const items: TabsProps["items"] = [
 ];
 
 const LeftAccount = () => {
-  const pathname = usePathname();
-  console.log(pathname);
   return (
     <div className="account-left bg-white px-6 py-4">
-      {/* <div className="flex items-center justify-center text-xl font-medium gap-x-4 mx-auto">
-        <a className="cursor-pointer" href="#transaction">
-          Lịch sử giao dịch
-        </a>
-        <span>Thông tin cá nhân</span>
-        <span>Chính sách</span>
-      </div>
-      <div></div> */}
       <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
     </div>
   );

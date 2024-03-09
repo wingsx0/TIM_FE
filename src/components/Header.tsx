@@ -1,14 +1,32 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import MenuHeader from "./menu/MenuHeader";
+import { usePathname } from "next/navigation";
+// menu hidden
+import { CloseOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import { AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
+import type { MenuProps } from "antd";
+import { Menu } from "antd";
+
+type MenuItem = Required<MenuProps>["items"][number];
 
 const Header = () => {
+  const pathname = usePathname();
+  const [showMenu, setShowMenu] = useState(false);
+  React.useEffect(() => {
+    setShowMenu(false);
+  }, [pathname]);
   return (
     // md:mb-12 mb-0
     <header className="bg-[#032541] text-white">
-      <nav className="container-page">
-        <div className="flex items-center justify-between px-4 md:px-0 py-5">
+      {showMenu && (
+        <div className="bg-[#343a40] opacity-60 fixed top-0 right-0 bottom-0 left-0 z-[1020] overflow-hidden w-screen h-screen transition-all duration-500 ease-in-out block screen1200:hidden"></div>
+      )}
+
+      <div className="container-page">
+        <div className="flex items-center justify-between px-4 py-5">
           <Link href={"/"} className="">
             <svg
               width="92"
@@ -137,10 +155,78 @@ const Header = () => {
           {/* Search */}
           <InputSearch />
           <span>Đăng nhập</span>
-          <Bars3Icon className="w-6 h-6 xl:hidden" />
+          <Bars3Icon
+            className="w-6 h-6 lg:hidden"
+            onClick={() => setShowMenu(!showMenu)}
+          />
         </div>
-      </nav>
+        {showMenu && (
+          <nav className="fixed pr-4 md:px-11 z-[1030] block w-[287px] md:w-[346px] top-0 bottom-0 h-full bg-white transition-all duration-500 ease-in-out pl-8 pt-6 overflow-hidden translate-x-[0] right-0 screen1200:hidden">
+            <div className="flex justify-end">
+              <div
+                className="cursor-pointer"
+                onClick={() => setShowMenu(false)}
+              >
+                <CloseOutlined style={{ fontSize: "16px", color: "#08c" }} />
+              </div>
+            </div>
+            <MenuHidden></MenuHidden>
+          </nav>
+        )}
+      </div>
     </header>
+  );
+};
+
+const MenuHidden = () => {
+  function getItem(
+    label: React.ReactNode,
+    key: React.Key,
+    icon?: React.ReactNode,
+    children?: MenuItem[],
+    type?: "group"
+  ): MenuItem {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      type,
+    } as MenuItem;
+  }
+
+  const items: MenuProps["items"] = [
+    getItem("Phim", "sub1", <MinusCircleOutlined />, [
+      getItem(<Link href="/movie/dang-chieu">Phim đang chiếu</Link>, "1", null),
+      getItem(<Link href="/movie/sap-chieu">Phim sắp chiếu</Link>, "2", null),
+    ]),
+
+    getItem("Góc điện ảnh", "sub2", <AppstoreOutlined />, [
+      getItem(<Link href="/movie/dang-chieu">Thể loại phim</Link>, "5"),
+      getItem(<Link href="/movie/dang-chieu">Diễn viên</Link>, "6"),
+      getItem(<Link href="/movie/dang-chieu">Đạo diễn</Link>, "7"),
+      getItem(<Link href="/movie/dang-chieu">Blog điện ảnh</Link>, "8"),
+    ]),
+
+    { type: "divider" },
+
+    getItem("Sự kiện", "sub4", <SettingOutlined />, [
+      getItem(<Link href="/movie/dang-chieu">Ưu đãi</Link>, "9"),
+      getItem(<Link href="/movie/dang-chieu">Phim tháng</Link>, "10"),
+    ]),
+  ];
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
+  };
+  return (
+    <Menu
+      onClick={onClick}
+      style={{ width: 256 }}
+      defaultSelectedKeys={["1"]}
+      defaultOpenKeys={["sub1"]}
+      mode="inline"
+      items={items}
+    />
   );
 };
 

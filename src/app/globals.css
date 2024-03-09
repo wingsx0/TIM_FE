@@ -26,7 +26,6 @@ select,
 textarea {
   background-color: transparent;
   outline: none;
-  border: 0;
 }
 select:active {
   outline: none;
@@ -36,7 +35,6 @@ button {
   cursor: pointer;
   background-color: transparent;
   outline: none;
-  border: 0;
 }
 body {
   min-height: 100vh;
@@ -86,4 +84,18 @@ body {
 }
 .fast-buy .ant-select-disabled {
   @apply border-none !important
+}
+.ant-radio-inner {
+  @apply border-primary !important
+}
+.ant-radio-checked .ant-radio-inner {
+  @apply bg-primary border-primary  !important
+}
+/* menu hidden */
+.ant-menu-submenu-title  {
+  @apply text-black43 hover:text-primary !important
+}
+.ant-menu-item-selected {
+  @apply text-black43 bg-white hover:text-primary !important
+
 }

@@ -2,10 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    //mt-12
     <footer className=" bg-[#032541] px-20 text-white">
-      <div className="py-8 border-">
-        <div className="flex justify-between">
+      <div className="py-8">
+        <div className="grid md:grid-cols-4 grid-cols-2 justify-between gap-y-6">
           <ul className="text-sm">
             <li className="font-semibold mb-8">Giới thiệu</li>
             <div className="flex flex-col gap-y-4">

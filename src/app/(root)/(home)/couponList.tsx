@@ -23,7 +23,7 @@ const CouponList = () => {
     ],
   };
   return (
-    <div className="container-page my-12">
+    <div className="container-page my-6 lg:my-12">
       <div className="flex items-center gap-x-10 font-medium mb-11">
         <span className=" text-xl px-2 py-1 border-l-4 border-l-primary">
           TIN KHUYỄN MÃI

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Card = () => {
   return (
-    <div className="h-48 md:w-56 md:h-72 lg:w-72 lg:h-96 xl:w-[291px] xl:h-[436px]">
+    <div className="w-56 h-72 lg:w-72 lg:h-96 xl:w-[291px] xl:h-[436px]">
       <div className="w-full h-full rounded overflow-hidden relative group transition-all">
         <Image
           src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

@@ -99,3 +99,23 @@ body {
   @apply text-black43 bg-white hover:text-primary !important
 
 }
+/* css dots */
+.slick-slider {
+  @apply relative
+}
+.slick-dots {
+  @apply bottom-3 !important
+}
+
+.slick-dots > li {
+  @apply w-3 h-3 border border-white rounded-full !important
+}
+.slick-dots > li.slick-active {
+  @apply bg-white text-white !important
+}
+.slick-dots li button:before {
+  @apply text-transparent !important
+}
+.slick-dots li.slick-active button:before {
+  @apply text-white !important
+}

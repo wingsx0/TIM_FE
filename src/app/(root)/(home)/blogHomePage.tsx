@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const BlogHomePage = () => {
   const [activeBlog, setActiveBlog] = useState(true);
   return (
-    <div className="container-page my-0 mx-auto md:py-12 md:px-4 text-lg font-medium">
+    <div className="container-page my-2 mx-auto md:py-12 md:px-4 text-lg font-medium">
       <div className="flex items-center gap-x-10 font-medium mb-11 transition-all">
         <span className=" text-xl px-2 py-1 border-l-4 border-l-primary">
           GÓC ĐIỆN ẢNH

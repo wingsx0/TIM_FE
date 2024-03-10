@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 const Card = () => {
   return (
-    <div className="w-36 xl:w-[291px]">
-      <div className="w-full h-56 xl:h-[436px] rounded overflow-hidden relative group transition-all">
+    <div className="h-48 md:w-56 md:h-72 lg:w-72 lg:h-96 xl:w-[291px] xl:h-[436px]">
+      <div className="w-full h-full rounded overflow-hidden relative group transition-all">
         <Image
           src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
@@ -18,7 +18,7 @@ const Card = () => {
         </span>
         <div className="absolute h-full w-full flex flex-col items-center justify-center gap-y-3 opacity-0  group-hover:opacity-100 transition-all z-20">
           <Link
-            href=""
+            href="/dat-ve/detail-page"
             className="z-20 text-white rounded flex items-center gap-x-1 bg-primary hover:opacity-90 py-1 px-3 xl:py-3 xl:px-6"
           >
             <TicketIcon className="w-4 h-4 xl:w-6 xl:h-6"></TicketIcon>
@@ -31,7 +31,7 @@ const Card = () => {
         </div>
         <div className="absolute h-full w-full bg-black opacity-0 z-10   group-hover:opacity-40 transition-all"></div>
       </div>
-      <span className="text-black3 text-xs xl:text-lg font-semibold">
+      <span className="text-black3 text-xs lg:text-base xl:text-lg font-semibold">
         Người Nhện: Không Còn Nhà
       </span>
     </div>

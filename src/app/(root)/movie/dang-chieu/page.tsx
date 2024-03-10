@@ -3,10 +3,10 @@ import Link from "next/link";
 import React from "react";
 const page = () => {
   return (
-    <div className="container-page">
+    <div className="container-page my-12">
       <div className="flex items-center gap-x-10 font-medium mb-11">
         <span className=" text-xl px-2 py-1 border-l-4 border-l-primary">
-          GÓC ĐIỆN ẢNH
+          PHIM
         </span>
         <span className="cursor-pointer relative transition-all  text-primary">
           <span>Đang chiếu</span>

@@ -46,7 +46,7 @@ body {
 }
 
  .container-page {
-  @apply max-w-[1280px] mx-auto
+  @apply xl:max-w-[1280px] mx-auto xl:p-0 px-4
 }
 .line-default {
   @apply block border-b-4 border-b-[#f4f4f4]

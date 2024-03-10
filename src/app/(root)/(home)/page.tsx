@@ -52,7 +52,7 @@ const HomePage = () => {
           <div>
             <div className={`${active ? "" : "hidden"}`}>
               <div className="flex flex-col items-center">
-                <div className="grid grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-y-10 gap-x-6 gap-y-8 pb-6">
                   <Card />
                   <Card />
                   <Card />

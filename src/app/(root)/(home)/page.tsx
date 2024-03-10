@@ -24,7 +24,7 @@ const HomePage = () => {
               }`}
               onClick={() => setActive(true)}
             >
-              <span>Đang chiếu</span>
+              <span className="text-sm md:text-base">Đang chiếu</span>
               <div
                 className={`${
                   active
@@ -39,7 +39,7 @@ const HomePage = () => {
               }`}
               onClick={() => setActive(false)}
             >
-              <span>Sắp chiếu</span>
+              <span className="text-sm md:text-base">Sắp chiếu</span>
               <div
                 className={`${
                   active

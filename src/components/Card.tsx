@@ -1,7 +1,10 @@
-import React from "react";
-import { StarIcon, TicketIcon, PlayIcon } from "@heroicons/react/24/solid";
+"use client";
+import React, { useState } from "react";
+import { StarIcon, TicketIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+import ButtonTrailer from "./button/ButtonTrailer";
+
 const Card = () => {
   return (
     <div className="w-56 h-72 lg:w-72 lg:h-96 xl:w-[291px] xl:h-[436px]">
@@ -16,24 +19,27 @@ const Card = () => {
           <StarIcon className="h-6 w-6 text-yellow-400 " />
           <span className="font-semibold text-white">9</span>
         </span>
-        <div className="absolute h-full w-full flex flex-col items-center justify-center gap-y-3 opacity-0  group-hover:opacity-100 transition-all z-20">
-          <Link
-            href="/dat-ve/detail-page"
-            className="z-20 text-white rounded flex items-center gap-x-1 bg-primary hover:opacity-90 py-1 px-3 xl:py-3 xl:px-6"
-          >
-            <TicketIcon className="w-4 h-4 xl:w-6 xl:h-6"></TicketIcon>
-            <span className="text-xs xl:text-base">Mua vé</span>
-          </Link>
-          <span className="z-20 border border-white rounded flex items-center gap-x-1 py-1 px-3 xl:py-3 xl:px-6 text-white cursor-pointer hover:border-secondary hover:bg-secondary">
-            <PlayIcon className="w-4 h-4 xl:w-6 xl:h-6" />
-            <span className="text-xs xl:text-base">Trailer</span>
-          </span>
-        </div>
+        <Buttons></Buttons>
         <div className="absolute h-full w-full bg-black opacity-0 z-10   group-hover:opacity-40 transition-all"></div>
       </div>
       <span className="text-black3 text-xs lg:text-base xl:text-lg font-semibold">
         Người Nhện: Không Còn Nhà
       </span>
+    </div>
+  );
+};
+
+const Buttons = () => {
+  return (
+    <div className="absolute h-full w-full flex flex-col items-center justify-center gap-y-3 opacity-0  group-hover:opacity-100 transition-all z-20">
+      <Link
+        href="/dat-ve/detail-page"
+        className="z-20 text-white rounded flex items-center gap-x-1 bg-primary hover:opacity-90 py-1 px-3 xl:py-3 xl:px-6"
+      >
+        <TicketIcon className="w-4 h-4 xl:w-6 xl:h-6"></TicketIcon>
+        <span className="text-xs xl:text-base">Mua vé</span>
+      </Link>
+      <ButtonTrailer></ButtonTrailer>
     </div>
   );
 };

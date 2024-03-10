@@ -119,3 +119,10 @@ body {
 .slick-dots li.slick-active button:before {
   @apply text-white !important
 }
+/* reset modal */
+.modal-trailer .ant-modal-close {
+  @apply text-white hidden
+}
+.modal-trailer .ant-modal-content {
+  @apply rounded overflow-hidden p-0
+}

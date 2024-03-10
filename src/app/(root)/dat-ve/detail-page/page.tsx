@@ -5,6 +5,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import ButtonText from "@/components/button//ButtonText";
 import ListMovie from "@/components/sections/ListMovie";
 import BorderHeading from "@/components/text/BorderHeading";
+import Modal from "../Modal";
 const DetailPage = () => {
   return (
     <>

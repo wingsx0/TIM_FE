@@ -144,15 +144,7 @@ const EventItem = () => {
   const items: MenuProps["items"] = [
     {
       key: "1",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          Ưu đãi
-        </a>
-      ),
+      label: <a href="/khuyen-mai">Ưu đãi</a>,
     },
     {
       key: "2",

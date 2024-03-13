@@ -9,6 +9,7 @@ import { CloseOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
+import ButtonLoginHeader from "./button/ButtonLoginHeader";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -22,7 +23,10 @@ const Header = () => {
     // md:mb-12 mb-0
     <header className="bg-[#032541] text-white">
       {showMenu && (
-        <div className="bg-[#343a40] opacity-60 fixed top-0 right-0 bottom-0 left-0 z-[1020] overflow-hidden w-screen h-screen transition-all duration-500 ease-in-out block screen1200:hidden"></div>
+        <div
+          className="bg-[#343a40] opacity-60 fixed top-0 right-0 bottom-0 left-0 z-[1020] overflow-hidden w-screen h-screen transition-all duration-500 ease-in-out block screen1200:hidden"
+          onClick={() => setShowMenu(false)}
+        ></div>
       )}
 
       <div className="container-page">
@@ -154,7 +158,8 @@ const Header = () => {
           <MenuHeader />
           {/* Search */}
           <InputSearch />
-          <span>Đăng nhập</span>
+          {/* button login */}
+          <ButtonLoginHeader></ButtonLoginHeader>
           <Bars3Icon
             className="w-6 h-6 lg:hidden"
             onClick={() => setShowMenu(!showMenu)}

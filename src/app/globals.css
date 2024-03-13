@@ -49,7 +49,7 @@ body {
   @apply xl:max-w-[1280px] mx-auto xl:p-0 px-4
 }
 .line-default {
-  @apply block border-b-8 border-b-[#f4f4f4]
+  @apply block border-b-4 border-b-[#f4f4f4]
 }
 .account-left {
   width: calc((100% - 384px) - 64px);
@@ -71,7 +71,7 @@ body {
 
 /* Menu header */
  .ant-dropdown-menu  {
-  @apply rounded p-0 !important
+  @apply rounded p-0 overflow-hidden !important
 }
 .ant-dropdown-menu .ant-dropdown-menu-item {
   @apply w-48 text-center text-base py-2 rounded-none hover:border-l-4 hover:border-l-primary hover:text-primary hover:bg-[#e8fbf7] !important
@@ -126,8 +126,23 @@ body {
 .modal-trailer .ant-modal-content {
   @apply rounded overflow-hidden p-0
 }
-.ant-modal {
+.modal-trailer.ant-modal {
   @apply w-auto !important
+}
+
+/* Modal login */
+.modal-login .ant-modal-content {
+  @apply rounded overflow-hidden
+}
+/* user-login */
+.user-login .ant-form-item-label  {
+  @apply overflow-visible text-start
+}
+.user-login .ant-btn {
+  @apply w-full mt-5 bg-primary text-white  px-5
+} 
+.user-login .ant-btn:hover {
+  @apply bg-secondary text-white !important
 }
 /*  */
 .detail-page-right {

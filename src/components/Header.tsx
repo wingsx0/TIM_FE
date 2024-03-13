@@ -211,7 +211,7 @@ const MenuHidden = () => {
     { type: "divider" },
 
     getItem("Sự kiện", "sub4", <SettingOutlined />, [
-      getItem(<Link href="/movie/dang-chieu">Ưu đãi</Link>, "9"),
+      getItem(<Link href="/khuyen-mai">Ưu đãi</Link>, "9"),
       getItem(<Link href="/movie/dang-chieu">Phim tháng</Link>, "10"),
     ]),
   ];

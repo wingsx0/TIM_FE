@@ -49,7 +49,7 @@ body {
   @apply xl:max-w-[1280px] mx-auto xl:p-0 px-4
 }
 .line-default {
-  @apply block border-b-4 border-b-[#f4f4f4]
+  @apply block border-b-8 border-b-[#f4f4f4]
 }
 .account-left {
   width: calc((100% - 384px) - 64px);

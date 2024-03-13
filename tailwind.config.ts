@@ -16,6 +16,7 @@ const config: Config = {
         gray4A: "#4a4a4a",
         bgAccount: "#f9f9f9",
         borderGray: "#e5e7eb",
+        blackA4: "rgba(0, 0, 0, 0.40)",
       },
       backgroundImage: {
         "gradient-primary": `linear-gradient(90deg, #1DD4AA 0%, #02B5E2 100%)`,

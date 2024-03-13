@@ -4,7 +4,7 @@ import BorderHeading from "../text/BorderHeading";
 
 const ListMovie = () => {
   return (
-    <div>
+    <div className="hidden lg:block">
       <BorderHeading uppercase>Phim đang chiếu</BorderHeading>
       <div className="flex flex-col gap-y-4">
         <Card></Card>

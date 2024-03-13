@@ -126,3 +126,10 @@ body {
 .modal-trailer .ant-modal-content {
   @apply rounded overflow-hidden p-0
 }
+.ant-modal {
+  @apply w-auto !important
+}
+/*  */
+.detail-page-right {
+width: calc((100% - 334px) - 32px);
+}

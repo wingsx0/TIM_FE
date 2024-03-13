@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { PlayIcon } from "@heroicons/react/24/solid";
-import { Button, Modal } from "antd";
-import Card from "../Card";
+import { Modal } from "antd";
 import ModalTrailer from "../modal/ModalTrailer";
 
 const ButtonTrailer = () => {

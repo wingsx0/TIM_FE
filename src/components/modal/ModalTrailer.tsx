@@ -2,7 +2,7 @@ import React from "react";
 
 const ModalTrailer = () => {
   return (
-    <div className="min-w-[400px] h-[80vh]">
+    <div className="min-w-[400px] w-full h-[70vh]">
       <iframe
         className="w-full h-full"
         src="https://www.youtube.com/embed/_inKs4eeHiI?si=1q0S5LqIKArg2GVo"

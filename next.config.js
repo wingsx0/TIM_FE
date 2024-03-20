@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "vnpay.vn",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.galaxycine.vn",
+      },
     ],
   },
 };

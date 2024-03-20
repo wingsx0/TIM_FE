@@ -22,15 +22,7 @@ const MovieItem = () => {
     },
     {
       key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          Phim sắp chiếu
-        </a>
-      ),
+      label: <Link href="/movie/sap-chieu">Phim sắp chiếu</Link>,
     },
   ];
   return (
@@ -59,63 +51,23 @@ const CategoryItem = () => {
   const items: MenuProps["items"] = [
     {
       key: "1",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          Thể loại phim
-        </a>
-      ),
+      label: <a href="">Thể loại phim</a>,
     },
     {
       key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          Diễn viên
-        </a>
-      ),
+      label: <a href="">Diễn viên</a>,
     },
     {
       key: "3",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          Đạo diễn
-        </a>
-      ),
+      label: <a href="">Đạo diễn</a>,
     },
     {
       key: "4",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          Bình luận phim
-        </a>
-      ),
+      label: <a href="">Bình luận phim</a>,
     },
     {
       key: "4",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          Blog điện ảnh
-        </a>
-      ),
+      label: <a href="">Blog điện ảnh</a>,
     },
   ];
   return (
@@ -148,15 +100,7 @@ const EventItem = () => {
     },
     {
       key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          Phim tháng
-        </a>
-      ),
+      label: <a href="/top-phim">Top phim tháng</a>,
     },
   ];
   return (

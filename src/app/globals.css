@@ -148,3 +148,26 @@ body {
 .detail-page-right {
 width: calc((100% - 334px) - 32px);
 }
+
+/* number stroke */
+.number {
+  width: 60px;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #04172d;
+  opacity: 1;
+}
+.number.is-top-1 {
+  -webkit-text-stroke: 1px #4a90e2;
+}
+.number.is-top-2 {
+  -webkit-text-stroke: 1px #50e3c2;
+}
+.number.is-top-3 {
+  -webkit-text-stroke: 1px #e35050;
+}
+

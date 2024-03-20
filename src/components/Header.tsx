@@ -21,7 +21,7 @@ const Header = () => {
   }, [pathname]);
   return (
     // md:mb-12 mb-0
-    <header className="bg-[#032541] text-white">
+    <header className="bg-white text-black43">
       {showMenu && (
         <div
           className="bg-[#343a40] opacity-60 fixed top-0 right-0 bottom-0 left-0 z-[1020] overflow-hidden w-screen h-screen transition-all duration-500 ease-in-out block screen1200:hidden"
@@ -207,17 +207,17 @@ const MenuHidden = () => {
     ]),
 
     getItem("Góc điện ảnh", "sub2", <AppstoreOutlined />, [
-      getItem(<Link href="/movie/dang-chieu">Thể loại phim</Link>, "5"),
-      getItem(<Link href="/movie/dang-chieu">Diễn viên</Link>, "6"),
-      getItem(<Link href="/movie/dang-chieu">Đạo diễn</Link>, "7"),
-      getItem(<Link href="/movie/dang-chieu">Blog điện ảnh</Link>, "8"),
+      getItem(<Link href="">Thể loại phim</Link>, "5"),
+      getItem(<Link href="">Diễn viên</Link>, "6"),
+      getItem(<Link href="">Đạo diễn</Link>, "7"),
+      getItem(<Link href="">Blog điện ảnh</Link>, "8"),
     ]),
 
     { type: "divider" },
 
     getItem("Sự kiện", "sub4", <SettingOutlined />, [
       getItem(<Link href="/khuyen-mai">Ưu đãi</Link>, "9"),
-      getItem(<Link href="/movie/dang-chieu">Phim tháng</Link>, "10"),
+      getItem(<Link href="/movie/top-phim">Top phim tháng</Link>, "10"),
     ]),
   ];
   const onClick: MenuProps["onClick"] = (e) => {

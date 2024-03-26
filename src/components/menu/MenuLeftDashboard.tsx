@@ -29,15 +29,9 @@ function getItem(
 }
 const items: MenuProps["items"] = [
   getItem("Dashboard", "sub1", <DashboardOutlined />, [
+    getItem(<Link href="/dashboard/home">Home</Link>, "g1", null),
     getItem(
-      "Item 1",
-      "g1",
-      null,
-      [getItem("Option 1", "1"), getItem("Option 2", "2")],
-      "group"
-    ),
-    getItem(
-      "Item 2",
+      <Link href="">House</Link>,
       "g2",
       null,
       [getItem("Option 3", "3"), getItem("Option 4", "4")],
@@ -81,6 +75,7 @@ const MenuLeftDashboard = () => {
         defaultOpenKeys={["sub1"]}
         mode="inline"
         items={items}
+        className="menu-dashboard"
       />
     </div>
   );

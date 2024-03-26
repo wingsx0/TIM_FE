@@ -174,3 +174,15 @@ width: calc((100% - 334px) - 32px);
 .ant-btn-primary {
   @apply bg-primary !important;
 }
+/* menu-dashboard */
+
+.menu-dashboard .ant-menu-submenu-open.ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background: rgb(251,148,64);
+background: linear-gradient(90deg, rgba(251,148,64,1) 0%, rgba(251,148,64,0.7904411764705882) 100%);
+@apply transition-all ease-linear !important;
+}
+.menu-dashboard .ant-menu-item-selected {
+  background: rgb(251,148,64);
+  background: radial-gradient(circle, rgba(251,148,64,1) 0%, rgba(242,107,56,1) 100%);
+  @apply text-white font-normal !important;
+}

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {
   AppstoreOutlined,
+  DashboardOutlined,
+  HomeOutlined,
   MailOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
@@ -26,7 +28,7 @@ function getItem(
   } as MenuItem;
 }
 const items: MenuProps["items"] = [
-  getItem("Navigation One", "sub1", <MailOutlined />, [
+  getItem("Dashboard", "sub1", <DashboardOutlined />, [
     getItem(
       "Item 1",
       "g1",

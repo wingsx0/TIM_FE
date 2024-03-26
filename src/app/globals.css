@@ -170,4 +170,7 @@ width: calc((100% - 334px) - 32px);
 .number.is-top-3 {
   -webkit-text-stroke: 1px #e35050;
 }
-
+/* button primary */
+.ant-btn-primary {
+  @apply bg-primary !important;
+}

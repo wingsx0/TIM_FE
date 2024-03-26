@@ -3,29 +3,68 @@ import React, { useState } from "react";
 import { Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
 import Link from "next/link";
 import { EditOutlined } from "@ant-design/icons";
+import { IBanner } from "@/interface/iBanner";
 
-interface Item {
+interface IBannerTest {
+  id: number;
   key: string;
-  name: string;
-  age: number;
-  address: string;
+  img: string;
+  link: string;
+  noi_dung: string;
+  tieu_de: string;
 }
 
-const originData: Item[] = [];
-for (let i = 0; i < 100; i++) {
-  originData.push({
-    key: i.toString(),
-    name: `Edward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`,
-  });
-}
+const newData: IBanner[] = [
+  {
+    id: 1,
+    img: "",
+    link: "",
+    noi_dung: "",
+    tieu_de: "",
+  },
+  {
+    id: 2,
+    img: "",
+    link: "",
+    noi_dung: "",
+    tieu_de: "",
+  },
+  {
+    id: 3,
+    img: "",
+    link: "",
+    noi_dung: "",
+    tieu_de: "",
+  },
+];
+const originData: IBannerTest[] = newData.map((data) => {
+  return { ...data, key: data.id.toString() };
+});
+
+// const originData: IBannerTest[] = [
+//   {
+//     id: 1,
+//     img: "",
+//     link: "",
+//     key: "1",
+//     noi_dung: "",
+//     tieu_de: "",
+//   },
+// ];
+// for (let i = 0; i < 100; i++) {
+//   originData.push({
+//     key: i.toString(),
+//     name: `Edward ${i}`,
+//     age: 32,
+//     address: `London Park no. ${i}`,
+//   });
+// }
 interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
   editing: boolean;
   dataIndex: string;
   title: any;
   inputType: "number" | "text";
-  record: Item;
+  record: IBannerTest;
   index: number;
   children: React.ReactNode;
 }
@@ -68,9 +107,9 @@ const TableDangChieu = () => {
   const [data, setData] = useState(originData);
   const [editingKey, setEditingKey] = useState("");
 
-  const isEditing = (record: Item) => record.key === editingKey;
+  const isEditing = (record: IBannerTest) => record.key === editingKey;
 
-  const edit = (record: Partial<Item> & { key: React.Key }) => {
+  const edit = (record: Partial<IBannerTest> & { key: React.Key }) => {
     form.setFieldsValue({ name: "", age: "", address: "", ...record });
     setEditingKey(record.key);
   };
@@ -81,7 +120,7 @@ const TableDangChieu = () => {
 
   const save = async (key: React.Key) => {
     try {
-      const row = (await form.validateFields()) as Item;
+      const row = (await form.validateFields()) as IBannerTest;
 
       const newData = [...data];
       const index = newData.findIndex((item) => key === item.key);
@@ -105,27 +144,27 @@ const TableDangChieu = () => {
 
   const columns = [
     {
-      title: "name",
-      dataIndex: "name",
+      title: "Hình ảnh",
+      dataIndex: "img",
       width: "25%",
       editable: true,
     },
     {
-      title: "age",
-      dataIndex: "age",
+      title: "Đường dẫn",
+      dataIndex: "Link",
       width: "15%",
       editable: true,
     },
     {
-      title: "address",
-      dataIndex: "address",
+      title: "Nội dung",
+      dataIndex: "noi_dung",
       width: "40%",
       editable: true,
     },
     {
       title: "operation",
       dataIndex: "operation",
-      render: (_: any, record: Item) => {
+      render: (_: any, record: IBannerTest) => {
         const editable = isEditing(record);
         return editable ? (
           <span>
@@ -160,7 +199,7 @@ const TableDangChieu = () => {
     }
     return {
       ...col,
-      onCell: (record: Item) => ({
+      onCell: (record: IBannerTest) => ({
         record,
         inputType: col.dataIndex === "age" ? "number" : "text",
         dataIndex: col.dataIndex,

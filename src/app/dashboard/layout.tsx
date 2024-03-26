@@ -10,7 +10,7 @@ const LayoutDashboard = ({ children }: { children: React.ReactNode }) => {
   } = theme.useToken();
   return (
     <>
-      <Layout>
+      <Layout className="dashboard-layout">
         <Header style={{ display: "flex", alignItems: "center" }}>
           <div className="demo-logo" />
           {/* <Menu

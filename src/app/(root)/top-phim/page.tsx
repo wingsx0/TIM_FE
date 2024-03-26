@@ -2,42 +2,8 @@
 import ListMovie from "@/components/sections/ListMovie";
 import BorderHeading from "@/components/text/BorderHeading";
 import React from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { data, topMovie } from "@/data/dataTopMovie";
-import { Line } from "react-chartjs-2";
+import { topMovie } from "@/data/dataTopMovie";
 import Image from "next/image";
-// interface
-import { ITopMovie } from "@/interface/iTopMovie";
-
-// import faker from 'faker';
-
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
-
-// export const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-//       position: "top" as const,
-//     },
-//   },
-// };
 
 const page = () => {
   const arrMovie = topMovie.sort((a, b) => b.view - a.view);
@@ -63,7 +29,7 @@ const page = () => {
   );
 };
 
-const Card = ({ movie, index }: { movie: ITopMovie; index: number }) => {
+const Card = ({ movie, index }: { movie: any; index: number }) => {
   const { image, country, director, duration, name } = movie;
   return (
     <div className="flex items-center text-sm py-6 border-b border-b-gray4A">

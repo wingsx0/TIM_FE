@@ -59,10 +59,7 @@ const HeaderHomeDashboard = () => {
 const ItemHeader = ({ item }: { item: IItem }) => {
   const { icon, num, title, color, bgColor } = item;
   return (
-    <div
-      className="flex items-center justify-center rounded gap-x-3 py-3 px-2"
-      style={{ background: bgColor }}
-    >
+    <div className="flex items-center justify-center rounded gap-x-3 py-3 px-2 bg-white">
       <span
         className="p-3 rounded-full opacity-95 text-2xl text-white"
         style={{ backgroundColor: color }}

@@ -24,7 +24,7 @@ export const data = {
   ],
 };
 
-export const topMovie: ITopMovie[] = [
+export const topMovie: any[] = [
   {
     id: 1,
     image:

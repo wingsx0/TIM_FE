@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import {
   AppstoreOutlined,
+  DashboardFilled,
   DashboardOutlined,
+  HomeFilled,
   HomeOutlined,
   MailOutlined,
+  SettingFilled,
   SettingOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
@@ -28,8 +31,8 @@ function getItem(
   } as MenuItem;
 }
 const items: MenuProps["items"] = [
-  getItem("Dashboard", "sub1", <DashboardOutlined />, [
-    getItem(<Link href="/dashboard/home">Home</Link>, "g1", null),
+  getItem("Dashboard", "sub1", <DashboardFilled />, [
+    getItem(<Link href="/dashboard/home">Home</Link>, "g1", <HomeFilled />),
     getItem(
       <Link href="">House</Link>,
       "g2",
@@ -46,7 +49,7 @@ const items: MenuProps["items"] = [
 
   { type: "divider" },
 
-  getItem("Edit", "sub4", <SettingOutlined />, [
+  getItem("Edit", "sub4", <SettingFilled />, [
     getItem("Edit Phim", "sub3", null, [
       getItem(
         <Link href="/dashboard/edit/phim/dang-chieu">Đang chiếu</Link>,

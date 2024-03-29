@@ -1,6 +1,7 @@
 import React from "react";
 import HeaderHomeDashboard from "./HeaderHomeDashboard";
 import ThongKeMovie from "./ThongKeMovie";
+import ThongKeLeft from "./ThongKeLeft";
 
 const page = () => {
   return (
@@ -10,7 +11,9 @@ const page = () => {
         <div className="home-left">
           <ThongKeMovie />
         </div>
-        <div className="home-right"></div>
+        <div className="home-right">
+          <ThongKeLeft />
+        </div>
       </div>
     </>
   );

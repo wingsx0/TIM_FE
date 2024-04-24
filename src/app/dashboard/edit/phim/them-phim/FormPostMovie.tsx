@@ -1,44 +1,20 @@
 "use client";
 import React from "react";
-import {
-  Button,
-  Checkbox,
-  DatePicker,
-  Form,
-  type FormProps,
-  Input,
-  Select,
-  SelectProps,
-} from "antd";
+import { Button, Form, type FormProps, Input, Select, SelectProps } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { handleCreateMovieAction } from "@/actions/movie";
 import moment from "moment";
-type FieldType = {
-  id_loai?: number;
-  ten_phim?: string;
-  id_the_loai?: number;
-  ngay_chieu?: string;
-  quoc_gia?: string;
-  nha_sx?: string;
-  noi_dung?: string;
-  hinh?: string;
-  trailer?: string;
-  tuoi?: string;
-  dao_dien?: string;
-  thoi_luong?: number;
-};
-interface IProps {}
-const FormPostMovie = (props: IProps) => {
-  const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
+import { IMovie } from "@/interface/iTopMovie";
+
+const FormPostMovie = () => {
+  const onFinish: FormProps<IMovie>["onFinish"] = (values: IMovie) => {
     const dateString = moment(values.ngay_chieu).format("DD-MM-YYYY");
 
     console.log("Success:", values);
     handleCreateMovieAction(values);
   };
 
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
-    errorInfo
-  ) => {
+  const onFinishFailed: FormProps<IMovie>["onFinishFailed"] = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   const optionsTheLoai: SelectProps["options"] = [
@@ -63,7 +39,7 @@ const FormPostMovie = (props: IProps) => {
       onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Loại phim"
         name="id_loai"
         rules={[
@@ -78,7 +54,7 @@ const FormPostMovie = (props: IProps) => {
           placeholder="Chọn loại phim"
         />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Tên phim"
         name="ten_phim"
         rules={[
@@ -88,7 +64,7 @@ const FormPostMovie = (props: IProps) => {
         <Input placeholder="Nhập tên phim" />
       </Form.Item>
 
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Thể loại phim"
         name="id_the_loai"
         rules={[
@@ -119,7 +95,7 @@ const FormPostMovie = (props: IProps) => {
           options={}
         />
       </Form.Item> */}
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Thời lượng phim"
         name="thoi_luong"
         rules={[
@@ -131,7 +107,7 @@ const FormPostMovie = (props: IProps) => {
       >
         <Input type="number" placeholder="Nhập thời lượng phim" />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Đạo diễn"
         name="dao_dien"
         rules={[
@@ -150,9 +126,18 @@ const FormPostMovie = (props: IProps) => {
           },
         ]}
       > */}
-      <DatePicker format="DD-MM-YY" placeholder="dd/mm/yy" />
+      <Form.Item<IMovie>
+        label="Ngày sản xuất"
+        name="ngay_chieu"
+        rules={[
+          { required: true, message: "Vui lòng không để trống ngày chiếu!" },
+        ]}
+      >
+        <Input placeholder="Nhập ngày chiều" />
+      </Form.Item>
+      {/* <DatePicker format="DD-MM-YY" placeholder="dd/mm/yy" /> */}
       {/* </Form.Item> */}
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Quốc gia"
         name="quoc_gia"
         rules={[
@@ -164,7 +149,7 @@ const FormPostMovie = (props: IProps) => {
       >
         <Input placeholder="Nhập quốc gia" />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Nhà sản xuất"
         name="nha_sx"
         rules={[
@@ -176,7 +161,7 @@ const FormPostMovie = (props: IProps) => {
       >
         <Input placeholder="Nhập nhà sản xuất" />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Độ tuổi có thể xem"
         name="tuoi"
         rules={[
@@ -188,7 +173,7 @@ const FormPostMovie = (props: IProps) => {
       >
         <Input type="number" placeholder="Nhập độ tuổi có thể xem" />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Đường dẫn hình ảnh"
         name="hinh"
         rules={[
@@ -200,7 +185,7 @@ const FormPostMovie = (props: IProps) => {
       >
         <Input placeholder="Nhập độ đường dẫn hình ảnh " />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Đường dẫn trailer"
         name="trailer"
         rules={[
@@ -212,7 +197,7 @@ const FormPostMovie = (props: IProps) => {
       >
         <Input placeholder="Nhập đường dẫn trailer " />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<IMovie>
         label="Nội dung"
         name="noi_dung"
         rules={[

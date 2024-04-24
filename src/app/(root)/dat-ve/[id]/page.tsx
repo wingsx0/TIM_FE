@@ -5,14 +5,22 @@ import HeaderPage from "../HeaderPage";
 import ContentMoviePage from "../contentMoviePage";
 import InfoMoviePage from "../InfoMoviePage";
 import ShowTimesPage from "../ShowTimesPage";
-const DetailPage = () => {
+import { endPointMovie, endPointMovieTheLoai } from "@/utils/api";
+
+const DetailPage = async (props: any) => {
+  const { params } = props;
+  const id = params.id;
+  const res = await fetch(`${endPointMovie}/${id}`);
+  const data = await res.json();
+  const resTheLoai = await fetch(`${endPointMovieTheLoai}/${data.id_the_loai}`);
+  const dataTheLoai = await resTheLoai.json();
   return (
     <>
-      <HeaderPage></HeaderPage>
+      <HeaderPage image={data.hinh} link={data.trailer}></HeaderPage>
       <div className="container-page flex lg:flex-nowrap flex-wrap justify-between gap-x-8">
         <div>
-          <InfoMoviePage></InfoMoviePage>
-          <ContentMoviePage />
+          <InfoMoviePage data={data} theloai={dataTheLoai}></InfoMoviePage>
+          <ContentMoviePage content={data.noi_dung} />
           <ShowTimesPage />
         </div>
         <ListMovie></ListMovie>

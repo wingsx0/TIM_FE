@@ -32,9 +32,9 @@ const page = () => {
       <div className="container-page rounded md:mb-8 mb-4 flex justify-between gap-x-4 ư">
         <div className="w-[70%]">
           {/* Choose chair start */}
-          {/* <ChooseChair></ChooseChair> */}
+          <ChooseChair></ChooseChair>
           {/* Pay component start */}
-          <Pay></Pay>
+          {/* <Pay></Pay> */}
         </div>
         <div className="w-[411px]">
           <div className="p-4 bg-white text-black43 border-t-[6px] border-t-primary rounded">

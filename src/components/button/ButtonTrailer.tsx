@@ -3,7 +3,7 @@ import { PlayIcon } from "@heroicons/react/24/solid";
 import { Modal } from "antd";
 import ModalTrailer from "../modal/ModalTrailer";
 
-const ButtonTrailer = () => {
+const ButtonTrailer = ({ link }: { link: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -32,7 +32,7 @@ const ButtonTrailer = () => {
         footer={null}
         className="modal-trailer w-auto"
       >
-        <ModalTrailer></ModalTrailer>
+        <ModalTrailer link={link}></ModalTrailer>
       </Modal>
     </>
   );

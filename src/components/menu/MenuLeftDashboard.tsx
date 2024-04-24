@@ -59,6 +59,10 @@ const items: MenuProps["items"] = [
         <Link href="/dashboard/edit/phim/sap-chieu">Sắp chiếu</Link>,
         "8"
       ),
+      getItem(
+        <Link href="/dashboard/edit/phim/them-phim">Thêm phim</Link>,
+        "9"
+      ),
     ]),
     getItem(<Link href="/dashboard/edit/banner">Edit Banner</Link>, "10"),
     getItem(<Link href="/dashboard/edit/blog">Edit Blog</Link>, "11"),
@@ -66,13 +70,9 @@ const items: MenuProps["items"] = [
 ];
 
 const MenuLeftDashboard = () => {
-  //   const onClick: MenuProps["onClick"] = (e) => {
-  //     console.log("click ", e);
-  //   };
   return (
     <div>
       <Menu
-        // onClick={onClick}
         style={{ height: "100%", borderRight: 0 }}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}

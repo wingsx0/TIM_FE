@@ -1,3 +1,4 @@
+"use client";
 import ButtonLoadMore from "@/components/button/ButtonLoadMore";
 import Image from "next/image";
 import Link from "next/link";

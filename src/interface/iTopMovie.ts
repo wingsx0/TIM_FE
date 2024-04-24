@@ -1,4 +1,4 @@
-export interface ITopMovie {
+export interface IMovie {
   id_phim: number;
   id_loai: number;
   id_the_loai: number;
@@ -13,7 +13,7 @@ export interface ITopMovie {
   hinh: string;
   trailer: string;
   tuoi: string;
-  is_hidden: 0 | 1;
+  hidden: number;
 }
 export interface ITheLoaiMovie {
   id_the_loai: number;

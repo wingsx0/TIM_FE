@@ -47,8 +47,8 @@ const ButtonAdd = () => {
 
 const ContentModal = () => {
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    console.log("Success:", values);
     const res = await handleCreateBannerAction(values);
+    console.log("Banner created:", res);
   };
 
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (

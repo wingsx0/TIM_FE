@@ -1,8 +1,13 @@
 import Card from "@/components/Card";
+import { IMovie } from "@/interface/iTopMovie";
+import { endPointMovieLoai } from "@/utils/api";
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const page = async () => {
+  const res = await fetch(`${endPointMovieLoai}/2`);
+  const data = await res.json();
+  console.log(data);
   return (
     <div className="container-page my-12 px-4 md:px-6 ">
       <div className="flex items-center gap-x-10 font-medium mb-11">
@@ -19,12 +24,10 @@ const page = () => {
         </span>
       </div>
       <div className="grid grid-cols-2  md:grid-cols-3 xl:grid-cols-4 xl:gap-y-10 gap-x-6 gap-y-8">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {data &&
+          data.map((movie: IMovie) => (
+            <Card key={movie.id_phim} data={movie} />
+          ))}
       </div>
     </div>
   );

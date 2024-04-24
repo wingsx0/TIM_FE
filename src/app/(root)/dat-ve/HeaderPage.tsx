@@ -5,7 +5,7 @@ import { Modal } from "antd";
 import { PlayCircleIcon } from "@heroicons/react/24/solid";
 import ModalTrailer from "@/components/modal/ModalTrailer";
 
-const HeaderPage = () => {
+const HeaderPage = ({ link, image }: { link: string; image: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -25,7 +25,7 @@ const HeaderPage = () => {
           <div className="w-[5%] bg-gradient-to-r from-gray-950 to-transparent h-full absolute top-0 left-0 z-10"></div>
           <div className="relative w-full h-full">
             <Image
-              src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={image}
               alt=""
               fill
               className="w-full h-full object-cover"
@@ -47,7 +47,7 @@ const HeaderPage = () => {
         footer={null}
         className="modal-trailer w-[80%]"
       >
-        <ModalTrailer></ModalTrailer>
+        <ModalTrailer link={link}></ModalTrailer>
       </Modal>
     </>
   );

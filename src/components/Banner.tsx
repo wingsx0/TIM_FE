@@ -2,10 +2,10 @@
 import React from "react";
 import Image from "next/image";
 import Slider from "react-slick";
-import FastBuy from "./FastBuy";
 import Link from "next/link";
+import { IBanner } from "@/interface/iBanner";
 
-const Banner = () => {
+const Banner = ({ data }: { data: IBanner[] }) => {
   const settings = {
     className: "center",
     dots: true,
@@ -22,21 +22,22 @@ const Banner = () => {
     <div className="relative">
       <div className="banner overflow-hidden z-0">
         <Slider {...settings}>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          {data &&
+            data.map((banner: IBanner) => (
+              <Card key={banner.id} data={banner} />
+            ))}
         </Slider>
       </div>
     </div>
   );
 };
-const Card = () => {
+const Card = ({ data }: { data: IBanner }) => {
   return (
-    <Link href="">
+    <Link href={data.link}>
       <div className="w-full md:px-6">
         <div className="relative h-64 xl:h-[362px]">
           <Image
-            src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={data.img}
             alt="image"
             fill
             className="w-full h-full object-cover md:rounded"

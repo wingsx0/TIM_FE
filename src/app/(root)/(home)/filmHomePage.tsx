@@ -1,10 +1,14 @@
 "use client";
 import Card from "@/components/Card";
 import ButtonLoadMore from "@/components/button/ButtonLoadMore";
-import Image from "next/image";
+import { IMovie } from "@/interface/iTopMovie";
 import React, { useState } from "react";
-
-const FilmHomePage = () => {
+interface IProps {
+  moviesDangChieu: IMovie[];
+  moviesSapChieu: IMovie[];
+}
+const FilmHomePage = (props: IProps) => {
+  const { moviesDangChieu, moviesSapChieu } = props;
   const [active, setActive] = useState(true);
   return (
     <div className="container-page my-2 mx-auto md:py-12 md:px-4 text-lg font-medium">
@@ -45,51 +49,37 @@ const FilmHomePage = () => {
       </div>
       <div>
         <div className={`${active ? "" : "hidden"}`}>
-          <FilmDangChieu></FilmDangChieu>
+          <FilmDangChieu data={moviesDangChieu}></FilmDangChieu>
         </div>
         <div className={`${active ? "hidden" : ""}`}>
-          <FilmSapChieu></FilmSapChieu>
+          <FilmSapChieu data={moviesSapChieu}></FilmSapChieu>
         </div>
       </div>
     </div>
   );
 };
 
-const FilmDangChieu = () => {
+const FilmDangChieu = ({ data }: { data: IMovie[] }) => {
   return (
     <div className="flex flex-col items-center gap-y-4">
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-y-10 gap-x-6 gap-y-8 pb-6">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-      <div className="flex items-center justify-center">
-        <ButtonLoadMore link=""></ButtonLoadMore>
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-y-10 gap-x-6 gap-y-10 pb-6">
+        {data &&
+          data.map((movie: IMovie) => (
+            <Card key={movie.id_phim} data={movie} />
+          ))}
       </div>
     </div>
   );
 };
 
-const FilmSapChieu = () => {
+const FilmSapChieu = ({ data }: { data: IMovie[] }) => {
   return (
-    <div className="flex flex-col items-center gap-y-4">
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-y-10 gap-x-6 gap-y-8 pb-6">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-      <div className="flex items-center justify-center">
-        <ButtonLoadMore link=""></ButtonLoadMore>
+    <div>
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-y-12 gap-x-6 gap-y-10 pb-6">
+        {data &&
+          data.map((movie: IMovie) => (
+            <Card key={movie.id_phim} data={movie} />
+          ))}
       </div>
     </div>
   );

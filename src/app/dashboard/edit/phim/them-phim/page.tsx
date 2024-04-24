@@ -18,9 +18,9 @@ import { FormProps } from "antd";
 
 const page = async () => {
   return (
-    <>
+    <div className="bg-white py-3 rounded">
       <FormPostMovie></FormPostMovie>
-    </>
+    </div>
   );
 };
 

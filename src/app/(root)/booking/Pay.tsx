@@ -34,6 +34,7 @@ const Pay = () => {
     </div>
   );
 };
+
 const ChoosePay = () => {
   const [value, setValue] = useState("momo");
   const onChange = (e: RadioChangeEvent) => {

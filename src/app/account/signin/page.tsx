@@ -1,7 +1,14 @@
+import HeaderAccount from "@/components/HeaderAccount";
 import React from "react";
+import ContentSigin from "./ContentSigin";
 
-const page = () => {
-  return <div>Signin</div>;
+const Page = () => {
+  return (
+    <div className="w-full px-3">
+      <HeaderAccount>Đăng Nhập Infinity</HeaderAccount>
+      <ContentSigin></ContentSigin>
+    </div>
+  );
 };
 
-export default page;
+export default Page;

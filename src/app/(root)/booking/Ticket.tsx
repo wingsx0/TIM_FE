@@ -1,11 +1,12 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useAppSelector } from "@/redux/store";
 import { handleChangeMoney } from "@/utils/ultils";
+import ButtonNext from "./ButtonNext";
 
 const Ticket = () => {
   const { seatList } = useAppSelector((state) => state.roomReducer);
-
   return (
     <div className="w-[411px]">
       <div className="p-4 bg-white text-black43 border-t-[6px] border-t-primary rounded">
@@ -63,9 +64,7 @@ const Ticket = () => {
       </div>
       <div className="font-medium mt-8 flex items-center justify-between">
         <button className="py-[10px] px-[70px] text-primary">Quay lại</button>
-        <button className="py-[10px] px-[70px] bg-primary rounded text-white">
-          Tiếp tục
-        </button>
+        <ButtonNext></ButtonNext>
       </div>
     </div>
   );

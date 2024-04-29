@@ -73,8 +73,9 @@ body {
  .ant-dropdown-menu  {
   @apply rounded p-0 overflow-hidden !important
 }
+/* fff1e6 */
 .ant-dropdown-menu .ant-dropdown-menu-item {
-  @apply w-48 text-center text-base py-2 rounded-none hover:border-l-4 hover:border-l-primary hover:text-primary hover:bg-[#e8fbf7] !important
+  @apply min-w-48 text-center text-base py-2 rounded-none hover:border-l-4 hover:border-l-primary hover:text-primary hover:bg-[#fff1e6] !important
 }
 .fast-buy .ant-form-item {
   @apply mb-0

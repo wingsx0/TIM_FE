@@ -6,3 +6,7 @@ export const endPointMovie = `http://localhost:${port}/movie`;
 export const endPointMovieLoai = `http://localhost:${port}/movie/loai`;
 // the loai
 export const endPointMovieTheLoai = `http://localhost:${port}/theloai`;
+// user
+export const endPointUserSignIn = `http://localhost:${port}/users/login`;
+export const endPointUserSignUp = `http://localhost:${port}/users/register`;
+export const endPointUsers = `http://localhost:${port}/users/tai_khoan`;

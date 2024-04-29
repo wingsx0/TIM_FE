@@ -9,11 +9,15 @@ import { CloseOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
-import ButtonLoginHeader from "./button/ButtonLoginHeader";
+import AccountBox from "./AccountBox";
+import { useSelector } from "react-redux";
+import { setIsLogin } from "@/redux/features/authSlice";
+import { useAppSelector } from "@/redux/store";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const Header = () => {
+  const { isLogin } = useAppSelector((state) => state.authReducer);
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
   React.useEffect(() => {
@@ -159,7 +163,14 @@ const Header = () => {
           {/* Search */}
           <InputSearch />
           {/* button login */}
-          <ButtonLoginHeader></ButtonLoginHeader>
+          {isLogin ? (
+            <AccountBox></AccountBox>
+          ) : (
+            <Link href="/signin" className="hover:text-primary">
+              Đăng nhập
+            </Link>
+          )}
+
           <Bars3Icon
             className="w-6 h-6 lg:hidden"
             onClick={() => setShowMenu(!showMenu)}

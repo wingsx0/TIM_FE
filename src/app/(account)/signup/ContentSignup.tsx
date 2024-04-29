@@ -169,10 +169,7 @@ const ContentSignup = () => {
       <div className="line-default my-3"></div>
       <p className="text-center text-sm ">
         Bạn đã có tài khoản rồi?
-        <Link
-          href="/account/signin"
-          className="cursor-pointer text-primary underline"
-        >
+        <Link href="/signin" className="cursor-pointer text-primary underline">
           &nbsp;Đăng nhập tại đây
         </Link>
       </p>

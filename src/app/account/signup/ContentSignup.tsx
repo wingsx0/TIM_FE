@@ -7,6 +7,8 @@ import usePasswordToggle from "@/hooks/usePasswordToggle";
 import TextErrorForm from "@/components/text/TextErrorForm";
 import Link from "next/link";
 import usePasswordConfirm from "@/hooks/usePasswordConfirm";
+import useNotification from "@/hooks/useNotification";
+import { CheckCircleFilled, CloseCircleFilled } from "@ant-design/icons";
 
 const ContentSignup = () => {
   const schema = yup
@@ -18,7 +20,10 @@ const ContentSignup = () => {
         .max(50, "Họ và tên không được dài quá 50 kí tự !"),
       email: yup
         .string()
-        .email("Vui lòng nhập đúng định dạng email !")
+        .matches(
+          /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm,
+          "Vui lòng nhập đúng định dạng email !"
+        )
         .required("Vui lòng không để trống email !"),
       password: yup
         .string()
@@ -31,10 +36,13 @@ const ContentSignup = () => {
         .string()
         .required("Vui lòng không để trống xác nhận mật khẩu !")
         .oneOf([yup.ref("password")], "Mật khẩu không trùng nhau !"),
-      // sdt: yup
-      //   .string()
-      //   .required()
-      //   .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g),
+      sdt: yup
+        .string()
+        .required()
+        .matches(
+          /(84|0[3|5|7|8|9])+([0-9]{8})\b/g,
+          "Vui lòng nhập đúng định dạng số điện thoại !"
+        ),
       gioi_tinh: yup.string().required(),
     })
     .required();
@@ -44,52 +52,70 @@ const ContentSignup = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
   const [passwordInputType, toggleIcon] = usePasswordToggle();
   const [passwordInputTypeC, toggleIconC] = usePasswordConfirm();
 
+  const { openNotification, contextHolder } = useNotification();
+
   const handleOnSubmit = (data: any) => {
     const { confirmpass, ...formData } = data;
     console.log(formData);
+    openNotification({
+      message: "Đăng ký thành công",
+      description: "Chúc mừng bạn đã đăng ký thành công tài khoản Infinity !",
+      icon: <CheckCircleFilled className="text-green-500" />,
+    });
     reset();
   };
+
   return (
     <>
+      {contextHolder}
       <form
-        className="px-10 flex flex-col gap-y-3"
+        className="px-10 flex flex-col gap-y-1"
         onSubmit={handleSubmit(handleOnSubmit)}
       >
         <div className="flex flex-col">
-          <label htmlFor="" className="text-black3 mb-1">
-            Họ và tên
-          </label>
-          <input
-            {...register("ho_ten")}
-            className="border border-gray-300 py-2 rounded px-1"
-          />
+          <Label>Họ và tên</Label>
+          <div className="flex items-center border border-gray-300 py-2 rounded px-2 gap-x-2">
+            <input
+              {...register("ho_ten")}
+              placeholder="Nhập họ và tên"
+              className="w-full"
+            />
+            {errors.ho_ten && <CloseCircleFilled className="text-red-500" />}
+            {dirtyFields.ho_ten && !errors.ho_ten && (
+              <CheckCircleFilled className="text-green-500" />
+            )}
+          </div>
           <TextErrorForm>{errors.ho_ten?.message}</TextErrorForm>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="" className="text-black3 mb-1">
-            Email
-          </label>
-          <input
-            {...register("email")}
-            className="border border-gray-300 py-2 rounded px-2"
-          />
+          <Label>Email</Label>
+          <div className="flex items-center border border-gray-300 py-2 rounded px-2 gap-x-2">
+            <input
+              {...register("email")}
+              placeholder="Nhập email"
+              className="w-full"
+            />
+            {errors.email && <CloseCircleFilled className="text-red-500" />}
+            {dirtyFields.email && !errors.email && (
+              <CheckCircleFilled className="text-green-500" />
+            )}
+          </div>
           <TextErrorForm>{errors.email?.message}</TextErrorForm>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="" className="text-black3 mb-1">
-            Mật khẩu
-          </label>
+          <Label>Mật khẩu</Label>
           <div className="border border-gray-300 py-2 rounded px-2 flex items-center justify-between">
             <input
               {...register("password")}
               className="w-full pr-2"
+              placeholder="Nhập mật khẩu"
               type={passwordInputType}
             />
             <span>{toggleIcon}</span>
@@ -97,13 +123,12 @@ const ContentSignup = () => {
           <TextErrorForm>{errors.password?.message}</TextErrorForm>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="" className="text-black3 mb-1">
-            Nhập lại mật khẩu
-          </label>
+          <Label>Xác nhận mật khẩu</Label>
           <div className="border border-gray-300 py-2 rounded px-2 flex items-center justify-between">
             <input
               {...register("confirmpass")}
               className="w-full pr-2"
+              placeholder="Xác nhận mật khẩu"
               type={passwordInputTypeC}
             />
             <span>{toggleIconC}</span>
@@ -111,9 +136,22 @@ const ContentSignup = () => {
           <TextErrorForm>{errors.confirmpass?.message}</TextErrorForm>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="" className="text-black3 mb-1">
-            Giới tính
-          </label>
+          <Label>Số điện thoại</Label>
+          <div className="flex items-center border border-gray-300 py-2 rounded px-2 gap-x-2">
+            <input
+              {...register("sdt")}
+              placeholder="Nhập số điện thoại"
+              className="w-full"
+            />
+            {errors.sdt && <CloseCircleFilled className="text-red-500" />}
+            {dirtyFields.sdt && !errors.sdt && (
+              <CheckCircleFilled className="text-green-500" />
+            )}
+          </div>
+          <TextErrorForm>{errors.sdt?.message}</TextErrorForm>
+        </div>
+        <div className="flex flex-col">
+          <Label>Giới tính</Label>
           <select
             className="border border-gray-300 py-2 rounded px-2  "
             {...register("gioi_tinh")}
@@ -141,5 +179,12 @@ const ContentSignup = () => {
     </>
   );
 };
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <label htmlFor="" className="text-sm mb-1">
+      {children}
+    </label>
+  );
+}
 
 export default ContentSignup;

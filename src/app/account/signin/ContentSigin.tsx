@@ -6,6 +6,7 @@ import * as yup from "yup";
 import usePasswordToggle from "@/hooks/usePasswordToggle";
 import TextErrorForm from "@/components/text/TextErrorForm";
 import Link from "next/link";
+import useNotification from "@/hooks/useNotification";
 
 const ContentSigin = () => {
   const schema = yup
@@ -28,14 +29,24 @@ const ContentSigin = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
   const [passwordInputType, toggleIcon] = usePasswordToggle();
-  const onSubmit = (data: FormData) => console.log(data);
+  const { openNotification, contextHolder } = useNotification();
+
+  const onSubmit = (data: FormData) => {
+    openNotification({
+      message: "Đăng nhập thành công !",
+    });
+    console.log(data);
+    reset();
+  };
   return (
     <>
+      {contextHolder}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="px-10 flex flex-col gap-y-4"

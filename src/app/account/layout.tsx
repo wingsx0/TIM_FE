@@ -4,7 +4,7 @@ import React from "react";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex items-center justify-center  h-screen bg-gray-300">
-      <div className="w-[70%] h-[80%] flex items-center bg-white shadow-md rounded overflow-hidden">
+      <div className="w-[70%] h-[95%] flex items-center bg-white shadow-md rounded overflow-hidden">
         <div className="relative w-[60%] h-full">
           <Image
             src="/images/backgroud.png"

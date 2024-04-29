@@ -1,22 +1,25 @@
+import React from "react";
 import { SmileOutlined } from "@ant-design/icons";
 import { notification } from "antd";
-import React from "react";
-interface INotification {
-  icon?: React.ReactNode;
-  title?: string;
-  message?: string;
-}
+
 const useNotification = () => {
-  const openNotification = (props: INotification) => {
-    const { icon, title, message } = props;
-    notification.open({
-      message: title || "Notification Title",
-      description: message || "This is the content of the notification.",
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = ({
+    message,
+    description,
+    icon,
+  }: {
+    message?: string;
+    description?: string;
+    icon?: React.ReactNode;
+  }) => {
+    api.open({
+      message: message || "",
+      description: description || "",
       icon: icon || <SmileOutlined style={{ color: "#108ee9" }} />,
     });
   };
-
-  return openNotification;
+  return { openNotification, contextHolder };
 };
 
 export default useNotification;

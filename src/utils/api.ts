@@ -11,3 +11,5 @@ export const endPointUserSignIn = `http://localhost:${port}/users/login`;
 export const endPointUserSignUp = `http://localhost:${port}/users/register`;
 export const endPointUsers = `http://localhost:${port}/users/tai_khoan`;
 export const endPointUsersChangePass = `http://localhost:${port}/users/changepassword`;
+// search
+export const endPointSearchNameMovie = `http://localhost:${port}/search?query=`;

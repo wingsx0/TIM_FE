@@ -10,9 +10,8 @@ import { AppstoreOutlined, SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import AccountBox from "./AccountBox";
-import { useSelector } from "react-redux";
-import { setIsLogin } from "@/redux/features/authSlice";
 import { useAppSelector } from "@/redux/store";
+import InputSearch from "./InputSearch";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -161,23 +160,28 @@ const Header = () => {
           {/* Menu */}
           <MenuHeader />
           {/* Search */}
-          <InputSearch />
+          <div className="hidden md:flex">
+            <InputSearch />
+          </div>
+
           {/* button login */}
           {isLogin ? (
-            <AccountBox></AccountBox>
+            <div className="hidden md:flex">
+              <AccountBox></AccountBox>
+            </div>
           ) : (
-            <Link href="/signin" className="hover:text-primary">
+            <Link href="/signin" className="hover:text-primary hidden md:flex">
               Đăng nhập
             </Link>
           )}
 
           <Bars3Icon
-            className="w-6 h-6 lg:hidden"
+            className="w-6 h-6 md:hidden cursor-pointer"
             onClick={() => setShowMenu(!showMenu)}
           />
         </div>
         {showMenu && (
-          <nav className="fixed pr-4 md:px-11 z-[1030] block w-[287px] md:w-[346px] top-0 bottom-0 h-full bg-white transition-all duration-500 ease-in-out pl-8 pt-6 overflow-hidden translate-x-[0] right-0 screen1200:hidden">
+          <nav className="fixed pr-4 md:px-11 z-[1030] block w-[287px] md:w-[346px] top-0 bottom-0 h-full bg-white transition-all duration-500 ease-in-out pl-8 pt-6 overflow-hidden translate-x-[0] right-0 screen1200:hidden ">
             <div className="flex justify-end">
               <div
                 className="cursor-pointer"
@@ -186,7 +190,7 @@ const Header = () => {
                 <CloseOutlined style={{ fontSize: "16px", color: "#08c" }} />
               </div>
             </div>
-            <MenuHidden></MenuHidden>
+            <MenuHidden isLogin={isLogin}></MenuHidden>
           </nav>
         )}
       </div>
@@ -194,7 +198,7 @@ const Header = () => {
   );
 };
 
-const MenuHidden = () => {
+const MenuHidden = ({ isLogin }: { isLogin: boolean }) => {
   function getItem(
     label: React.ReactNode,
     key: React.Key,
@@ -235,36 +239,26 @@ const MenuHidden = () => {
     console.log("click ", e);
   };
   return (
-    <Menu
-      onClick={onClick}
-      style={{ width: 256 }}
-      defaultSelectedKeys={["1"]}
-      defaultOpenKeys={["sub1"]}
-      mode="inline"
-      items={items}
-    />
-  );
-};
-
-const InputSearch = () => {
-  return (
-    <div className="bg-white px-4 py-1 flex items-center rounded text-black3 text-sm">
-      <input type="text" placeholder="Tìm kiếm...." />
-      <span>
-        <svg
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <>
+      {isLogin ? (
+        <AccountBox />
+      ) : (
+        <Link
+          href="/signin"
+          className="bg-primary rounded-lg text-white py-2 w-full px-4"
         >
-          <path
-            d="M11.0667 12L6.86667 7.8C6.53333 8.06667 6.15 8.27778 5.71667 8.43333C5.28333 8.58889 4.82222 8.66667 4.33333 8.66667C3.12222 8.66667 2.09733 8.24711 1.25867 7.408C0.42 6.56889 0.000444444 5.544 0 4.33333C0 3.12222 0.419556 2.09733 1.25867 1.25867C2.09778 0.42 3.12267 0.000444444 4.33333 0C5.54444 0 6.56956 0.419556 7.40867 1.25867C8.24778 2.09778 8.66711 3.12267 8.66667 4.33333C8.66667 4.82222 8.58889 5.28333 8.43333 5.71667C8.27778 6.15 8.06667 6.53333 7.8 6.86667L12 11.0667L11.0667 12ZM4.33333 7.33333C5.16667 7.33333 5.87511 7.04178 6.45867 6.45867C7.04222 5.87556 7.33378 5.16711 7.33333 4.33333C7.33333 3.5 7.04178 2.79178 6.45867 2.20867C5.87556 1.62556 5.16711 1.33378 4.33333 1.33333C3.5 1.33333 2.79178 1.62511 2.20867 2.20867C1.62556 2.79222 1.33378 3.50044 1.33333 4.33333C1.33333 5.16667 1.62511 5.87511 2.20867 6.45867C2.79222 7.04222 3.50044 7.33378 4.33333 7.33333Z"
-            fill="#333333"
-          />
-        </svg>
-      </span>
-    </div>
+          Đăng nhập
+        </Link>
+      )}
+      <Menu
+        onClick={onClick}
+        style={{ width: 256 }}
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
+        mode="inline"
+        items={items}
+      />
+    </>
   );
 };
 

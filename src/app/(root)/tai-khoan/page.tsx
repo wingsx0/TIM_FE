@@ -4,8 +4,9 @@ import MidInfomation from "./MidInfomation";
 import BotInfomation from "./BotInfomation";
 import { usePathname } from "next/navigation";
 import LeftAccount from "./LeftAccount";
+import { useAppSelector } from "@/redux/store";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="bg-bgAccount pt-10 pb-16 text-black3">
       <div className="container-page flex gap-x-16">
@@ -22,4 +23,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

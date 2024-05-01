@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import roomReducer from "./features/RoomSlice";
 import authReducer from "./features/authSlice";
+import searchReducer from "./features/searchSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 export const store = configureStore({
   reducer: {
     roomReducer,
     authReducer,
+    searchReducer,
   },
 });
 

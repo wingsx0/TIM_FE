@@ -7,7 +7,7 @@ import ProfileAccount from "./ProfileAccount";
 import Policy from "./Policy";
 
 const onChange = (key: string) => {
-  console.log(key);
+  // console.log(key);
 };
 
 const items: TabsProps["items"] = [

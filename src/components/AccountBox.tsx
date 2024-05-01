@@ -13,7 +13,6 @@ import React from "react";
 
 const AccountBox = () => {
   const { user } = useAppSelector((state) => state.authReducer);
-  console.log(user);
   const items: MenuProps["items"] = [
     {
       key: "1",

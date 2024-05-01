@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import ProfileAccount from "./ProfileAccount";
+import Policy from "./Policy";
 
 const onChange = (key: string) => {
   console.log(key);
@@ -34,7 +35,7 @@ const items: TabsProps["items"] = [
   {
     key: "4",
     label: "Chính sách",
-    children: "Content of Tab Pane 3",
+    children: <Policy />,
   },
 ];
 

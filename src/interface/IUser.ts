@@ -1,4 +1,5 @@
 export interface IUser {
+  id_thanh_vien?: number | null;
   ho_ten?: string;
   email: string;
   password: string;

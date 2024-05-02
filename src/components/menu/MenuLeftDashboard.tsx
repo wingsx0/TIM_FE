@@ -42,9 +42,9 @@ const items: MenuProps["items"] = [
     ),
   ]),
 
-  getItem("Navigation Two", "sub2", <AppstoreOutlined />, [
-    getItem("Option 5", "5"),
-    getItem("Option 6", "6"),
+  getItem("Xuất chiếu phim", "sub2", <AppstoreOutlined />, [
+    getItem(<Link href="/dashboard/xuat-chieu/">Xuất chiếu</Link>, "5"),
+    getItem(<Link href="/dashboard/edit/phim/dang-chieu">DOM</Link>, "6"),
   ]),
 
   { type: "divider" },

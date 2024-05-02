@@ -5,7 +5,11 @@ import HeaderPage from "../HeaderPage";
 import ContentMoviePage from "../contentMoviePage";
 import InfoMoviePage from "../InfoMoviePage";
 import ShowTimesPage from "../ShowTimesPage";
-import { endPointMovie, endPointMovieTheLoai } from "@/utils/api";
+import {
+  endPointMovie,
+  endPointMovieTheLoai,
+  endPointXuatChieu,
+} from "@/utils/api";
 
 const DetailPage = async (props: any) => {
   const { params } = props;
@@ -14,6 +18,18 @@ const DetailPage = async (props: any) => {
   const data = await res.json();
   const resTheLoai = await fetch(`${endPointMovieTheLoai}/${data.id_the_loai}`);
   const dataTheLoai = await resTheLoai.json();
+  async function getData() {
+    try {
+      const res = await fetch(`${endPointXuatChieu}/${id}`, {
+        method: "GET",
+        next: { tags: ["list-xuatchieu"] },
+      });
+      return res.json();
+    } catch (error) {
+      throw new Error("Failed to fetch data");
+    }
+  }
+  const xuatChieu = await getData();
   return (
     <>
       <HeaderPage image={data.hinh} link={data.trailer}></HeaderPage>
@@ -21,7 +37,7 @@ const DetailPage = async (props: any) => {
         <div>
           <InfoMoviePage data={data} theloai={dataTheLoai}></InfoMoviePage>
           <ContentMoviePage content={data.noi_dung} />
-          <ShowTimesPage />
+          <ShowTimesPage xuatchieu={xuatChieu} />
         </div>
         <ListMovie></ListMovie>
       </div>

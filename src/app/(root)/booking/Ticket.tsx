@@ -5,7 +5,7 @@ import { useAppSelector } from "@/redux/store";
 import { handleChangeMoney } from "@/utils/ultils";
 import ButtonNext from "./ButtonNext";
 
-const Ticket = () => {
+const Ticket = ({ movie }: { movie: any }) => {
   const { seatList } = useAppSelector((state) => state.roomReducer);
   return (
     <div className="w-[411px]">
@@ -13,14 +13,17 @@ const Ticket = () => {
         <div className="flex gap-x-2">
           <div className="w-32 h-48 rounded relative">
             <Image
-              src="https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src={
+                movie.hinh ||
+                "https://images.unsplash.com/photo-1688151049001-522f61b0ebee?q=80&w=1917&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              }
               alt=""
               fill
               className="w-full h-full object-cover rounded"
             />
           </div>
           <div>
-            <span className="text-lg font-semibold">Kung Fu Panda 4</span>
+            <span className="text-lg font-semibold">{movie.ten_phim}</span>
             <p className="mt-[10px]">2D Phụ Đề</p>
           </div>
         </div>

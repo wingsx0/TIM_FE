@@ -30,6 +30,7 @@ const columns = [
 
 const TableBanner = (props: IProps) => {
   const { banners } = props;
+  console.log(banners);
   return (
     <>
       <ButtonAdd></ButtonAdd>

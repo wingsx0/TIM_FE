@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Form, FormProps, Input, Modal } from "antd";
+import { endPointBanner } from "@/utils/api";
 import { handleCreateBannerAction } from "@/actions";
+import { useRouter } from "next/navigation";
 
 type FieldType = {
   img?: string;
@@ -46,9 +48,8 @@ const ButtonAdd = () => {
 };
 
 const ContentModal = () => {
-  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const res = await handleCreateBannerAction(values);
-    console.log("Banner created:", res);
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values: any) => {
+    await handleCreateBannerAction(values);
   };
 
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (

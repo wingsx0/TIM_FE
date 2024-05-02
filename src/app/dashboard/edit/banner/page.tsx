@@ -4,8 +4,19 @@ import TableBanner from "./TableBanner";
 import { endPointBanner } from "@/utils/api";
 
 const page = async () => {
-  const res = await fetch(endPointBanner);
-  const data = await res.json();
+  async function getData() {
+    const res = await fetch(endPointBanner, {
+      method: "GET",
+      next: { tags: ["list-banners"] },
+    });
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  }
+  const data = await getData();
+
   return (
     <div className="bg-white py-3 rounded">
       <BorderHeading uppercase>Edit banner</BorderHeading>

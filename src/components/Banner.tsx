@@ -33,7 +33,7 @@ const Banner = ({ data }: { data: IBanner[] }) => {
 };
 const Card = ({ data }: { data: IBanner }) => {
   return (
-    <Link href={data.link}>
+    <div>
       <div className="w-full md:px-6">
         <div className="relative h-64 xl:h-[362px]">
           <Image
@@ -44,7 +44,7 @@ const Card = ({ data }: { data: IBanner }) => {
           />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

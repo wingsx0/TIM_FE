@@ -1,4 +1,6 @@
+import { IUser } from "@/interface/IUser";
 import { useAppSelector } from "@/redux/store";
+import { endPointUsers } from "@/utils/api";
 import {
   DingdingOutlined,
   FireFilled,
@@ -9,10 +11,27 @@ import {
 import { Dropdown, MenuProps } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const AccountBox = () => {
-  const { user } = useAppSelector((state) => state.authReducer);
+  const [user, setUser] = React.useState({ avatar: "", ho_ten: "" });
+  const router = useRouter();
+  const idUser = localStorage.getItem("idUser");
+  React.useEffect(() => {
+    async function getUser() {
+      const res = await fetch(endPointUsers);
+      const data = await res.json();
+      const user = data.find((user: IUser) => user.id_thanh_vien == idUser);
+      setUser(user);
+    }
+    getUser();
+  }, [idUser]);
+  const handleOnClick = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("idUser");
+    router.replace("/");
+  };
   const items: MenuProps["items"] = [
     {
       key: "1",
@@ -26,7 +45,7 @@ const AccountBox = () => {
     {
       key: "2",
       label: (
-        <div className="flex items-center gap-x-3">
+        <div className="flex items-center gap-x-3" onClick={handleOnClick}>
           <LogoutOutlined />
           <span>Đăng Xuất</span>,
         </div>

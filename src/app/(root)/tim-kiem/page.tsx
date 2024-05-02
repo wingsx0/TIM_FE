@@ -1,5 +1,6 @@
 "use client";
 import { IMovie } from "@/interface/iTopMovie";
+import { useAppSelector } from "@/redux/store";
 import { endPointSearchNameMovie } from "@/utils/api";
 import { SearchOutlined } from "@ant-design/icons";
 import Image from "next/image";
@@ -7,6 +8,7 @@ import React, { useState } from "react";
 
 const SearchPage = () => {
   const [keywords, setKeywords] = useState("");
+  console.log(keywords);
   const [movies, setMovies] = useState([]);
   const handleChangeValue = (e: any) => {
     setKeywords(e.target.value);
@@ -19,23 +21,26 @@ const SearchPage = () => {
   return (
     <div className="container-page my-10 ">
       <div className="w-[70%] mx-auto">
-        <form className="relative">
+        <div className="relative">
           <input
             type="text"
             className="py-2 border-b-2 border-gray-300 w-full"
             onChange={handleChangeValue}
           />
-          <span onClick={handleSearch}>
-            <SearchOutlined className="absolute top-2/4 right-0 -translate-y-2/4 cursor-pointer" />
-          </span>
-        </form>
+          <button
+            onClick={handleSearch}
+            className="absolute top-2/4 right-0 -translate-y-2/4 bg-primary h-full w-20 rounded text-white"
+          >
+            <SearchOutlined />
+          </button>
+        </div>
         <div className="mt-4">
-          <span>{movies.length} </span>
+          <span>{movies?.length || "0"} </span>
           <span>kết quả tìm kiếm cho từ khóa: </span>
           <span className="text-primary">{keywords}</span>
         </div>
         <div className="mt-5 flex flex-col gap-y-2">
-          {movies.length > 0 &&
+          {movies?.length > 0 &&
             movies.map((movie: IMovie) => (
               <Movie key={movie.id_phim} movie={movie}></Movie>
             ))}

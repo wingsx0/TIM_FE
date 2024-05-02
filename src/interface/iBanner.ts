@@ -1,7 +1,7 @@
 export interface IBanner {
-  id: number;
+  id?: number;
   img: string;
-  link: string;
-  noi_dung: string;
-  tieu_de: string;
+  link: string | null;
+  noi_dung: string | null;
+  tieu_de: string | null;
 }

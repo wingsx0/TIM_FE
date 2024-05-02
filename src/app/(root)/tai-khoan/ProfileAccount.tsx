@@ -12,18 +12,31 @@ import { Modal, Radio } from "antd";
 import Label from "@/components/text/Label";
 import TextErrorForm from "@/components/text/TextErrorForm";
 import { AppDispatch, useAppSelector } from "@/redux/store";
-import { endPointUsersChangePass } from "@/utils/api";
+import { endPointUsers, endPointUsersChangePass } from "@/utils/api";
 import useNotification from "@/hooks/useNotification";
 import { useDispatch } from "react-redux";
 import { getUser, setIsLogin } from "@/redux/features/authSlice";
 import { useRouter } from "next/navigation";
+import { IUser } from "@/interface/IUser";
 
 const ProfileAccount = () => {
-  const { user } = useAppSelector((state) => state.authReducer);
-  // const onChange = (e: RadioChangeEvent) => {
-  //   // console.log("radio checked", e.target.value);
-  //   setValue(e.target.value);
-  // };
+  const [user, setUser] = React.useState({
+    ho_ten: "",
+    email: "",
+    sdt: "",
+    password: "",
+    gioi_tinh: "",
+  });
+  const idUser = localStorage.getItem("idUser");
+  React.useEffect(() => {
+    async function getUser() {
+      const res = await fetch(endPointUsers);
+      const data = await res.json();
+      const user = data.find((user: IUser) => user.id_thanh_vien == idUser);
+      setUser(user);
+    }
+    getUser();
+  }, [idUser]);
   return (
     <div className="p-6">
       <form action="">
@@ -164,13 +177,13 @@ const ButtonChangePass = ({ user }: { user: any }) => {
         }
         if (res.status === 200) {
           openNotification({
-            message: `${data.payload.message}, bạn sẽ được chuyển về trang đăng nhập`,
+            message: `${data.payload.message}, bạn sẽ được chuyển về trang chủ`,
           });
-          dispatch(setIsLogin(false));
-          dispatch(getUser({}));
+          localStorage.removeItem("token");
+          localStorage.removeItem("idUser");
           setIsModalOpen(false);
           setTimeout(() => {
-            router.push("/signin");
+            router.push("/");
           }, 3000);
           reset();
         }

@@ -13,3 +13,5 @@ export const endPointUsers = `http://localhost:${port}/users/tai_khoan`;
 export const endPointUsersChangePass = `http://localhost:${port}/users/changepassword`;
 // search
 export const endPointSearchNameMovie = `http://localhost:${port}/search?query=`;
+//xuat chieu
+export const endPointXuatChieu = `http://localhost:${port}/xuatchieu`;

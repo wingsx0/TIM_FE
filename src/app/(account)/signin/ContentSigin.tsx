@@ -13,11 +13,9 @@ import { FrownOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
-import { getUser, setIsLogin } from "@/redux/features/authSlice";
 
 const ContentSigin = ({ users }: { users: IUser[] }) => {
   const router = useRouter();
-  const dispatch = useDispatch<AppDispatch>();
   const emailExists = (email: string) => {
     return users.some((user) => user.email === email);
   };
@@ -62,33 +60,33 @@ const ContentSigin = ({ users }: { users: IUser[] }) => {
           "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
-      }).then(async (res) => {
-        const payload = await res.json();
-        const data = {
-          status: res.status,
-          payload,
-        };
-        if (data.payload.status === 401) {
-          openNotification({
-            message: data.payload.error,
-            icon: <FrownOutlined className="text-red-500" />,
-          });
-        }
-        if (data.payload.status === 200) {
-          openNotification({
-            message: data.payload.message,
-          });
-          dispatch(setIsLogin(true));
-          dispatch(getUser(data.payload.user));
-          router.push("/");
-        }
-        return data;
       });
-      // reset();
+      const dataUser = await res.json();
+      if (res.ok) {
+        localStorage.setItem("token", dataUser.token);
+        localStorage.setItem("idUser", dataUser.user.id_thanh_vien);
+        openNotification({
+          message: "Đăng nhập thành công",
+        });
+        router.push("/");
+      } else {
+        openNotification({
+          message: "Đăng nhập thất bại !",
+          icon: <FrownOutlined className="text-red-500" />,
+        });
+      }
+      return dataUser;
     } catch (error) {
       console.log("Check errror", error);
     }
   };
+  React.useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) {
+      router.push("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       {contextHolder}

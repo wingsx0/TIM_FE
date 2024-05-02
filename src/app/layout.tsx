@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ReduxProvider } from "@/redux/provider";
-import { notification } from "antd";
 
 export default function RootLayout({
   children,

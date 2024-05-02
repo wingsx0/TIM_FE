@@ -12,16 +12,24 @@ import { Menu } from "antd";
 import AccountBox from "./AccountBox";
 import { useAppSelector } from "@/redux/store";
 import InputSearch from "./InputSearch";
+import { cookies } from "next/headers";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
 const Header = () => {
-  const { isLogin } = useAppSelector((state) => state.authReducer);
+  let token = localStorage.getItem("token");
+  const [isLogin, setIsLogin] = useState(false);
+
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
   React.useEffect(() => {
+    if (token) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
     setShowMenu(false);
-  }, [pathname]);
+  }, [pathname, token]);
   return (
     // md:mb-12 mb-0
     <header className="bg-white text-black43">
@@ -165,7 +173,7 @@ const Header = () => {
           </div>
 
           {/* button login */}
-          {isLogin ? (
+          {token ? (
             <div className="hidden md:flex">
               <AccountBox></AccountBox>
             </div>
@@ -190,7 +198,7 @@ const Header = () => {
                 <CloseOutlined style={{ fontSize: "16px", color: "#08c" }} />
               </div>
             </div>
-            <MenuHidden isLogin={isLogin}></MenuHidden>
+            <MenuHidden login={isLogin}></MenuHidden>
           </nav>
         )}
       </div>
@@ -198,7 +206,7 @@ const Header = () => {
   );
 };
 
-const MenuHidden = ({ isLogin }: { isLogin: boolean }) => {
+const MenuHidden = ({ login }: { login: boolean }) => {
   function getItem(
     label: React.ReactNode,
     key: React.Key,
@@ -240,7 +248,7 @@ const MenuHidden = ({ isLogin }: { isLogin: boolean }) => {
   };
   return (
     <>
-      {isLogin ? (
+      {login ? (
         <AccountBox />
       ) : (
         <Link
